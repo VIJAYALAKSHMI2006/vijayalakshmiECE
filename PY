@@ -1,0 +1,161 @@
+contact={
+"E1":["Vetri",40,"Male","CEO","Chennai",9054232110],
+"E2":["Meena",29,"Female","TL","Bengaluru",9876576723],
+"E3":["Riyas",40,"Male","HR","Coimbatore",8976235621],
+"E4":["Ezhil",35,"Male","HR","Hyderabad",7683240981],
+"E5":["Jenifer",35,"Female","TL","Trichy",7650981670],
+"E6":["Ramya",29,"Female","TL","Chennai",6790342199],
+"E7":["Kiruthika",28,"Female","TL","Trichy",9823567810],
+"E8":["Sairam",30,"Male","TL","Tiruvallur",7650248921],
+"E9":["Muthu",29,"Male","EMP","Salem",9756302181],
+"E10":["Deepa",28,"Female","EMP","Trichy",8790218763],
+"E11":["Kavitha",38,"Female","MANAGER","Madurai",9847019387],
+"E12":["Raja",45,"Male","MANAGER","Chennai",8741209821],
+"E13":["Suresh",29,"Male","EMP","Trichy",9107254309],
+"E14":["Sowmiya",27,"Female","EMP","Tirunelveli",9865016921],
+"E15":["Nithya",26,"Female","EMP","Tuticorin",8762001876],
+"E16":["Deepika",30,"Female","TL","Perambalur",9836745126],
+"E17":["Viji",28,"Female","EMP","Trichy",9870412765],
+"E18":["Ravi",35,"Male","MANAGER","Tiruvallur",9713098526],
+"E19":["Elango",34,"Male","TL","Namakkal",9754321935],
+"E20":["Sathish",38,"Male","MANAGER","Chennai",8972413409],
+"E21":["Senthil",29,"Male","EMP","Tanjore",9823874631],
+"E22":["Srimathi",30,"Female","TL","Erode",9867210891],
+"E23":["Sumathi",28,"Female","EMP","Kanyakumari",8765201654],
+"E24":["Chithra",39,"Female","HR","Salem",7861092657],
+"E25":["Malini",29,"Female","TL","Kancheepuram",9713450918],
+"E26":["Keerthi",28,"Female","EMP","Kanyakumari",8720198375]
+}
+def insert():
+	list=[]
+	key=input("Enter the key: ")
+	if key in contact.keys():
+		print("Key already exists.Enter a new key.")
+	else:
+		name=input("Enter the employee name: ")
+		age=int(input("Enter the age: "))
+		gender=input("Enter the gender(M/F): ")
+		posn=input("Enter the job position: ")
+		dist=input("Enter the district: ")
+		phoneno=input("Enter the phone number: ")
+		list=[name,age,gender,dist,phoneno]
+		contact[key]=list
+		print("Contact successfully inserted!")
+		print("\n")
+def update():
+	key=input("Enter the key to be updated: ")
+	for i in contact:
+		if i==key:
+			mod=input("Enter which attribute do you want to change (Name,Age,Gender,Position,Place,Phoneno): ")
+			if mod=="Name":
+				newname=input("Enter the new name: ")
+				contact[i][0]=newname
+			elif mod=="Age":
+				newage=int(input("Enter the new age: "))
+				contact[i][1]=newage
+			elif mod=="Gender":
+				newgen=input("Enter the new gender: ")
+				contact[i][2]=newgen
+			elif mod=="Position":
+				newpos=input("Enter the new position: ")
+				contact[i][3]=newpos
+			elif mod=="Place":
+				newcity=input("Enter the new city: ")
+				contact[i][4]=newcity
+			elif mod=="Phoneno":
+				newnumber=input("Enter the new number: ")
+				contact[i][5]=newnumber
+		print("Contact successfully updated.")
+		print("\n")
+def remove():
+	key=input("Enter the key value to be deleted: ")
+	contact.pop(key)
+	print("Contact successfully deleted.")
+	print("\n")
+def display():
+	key=input("Enter the key value to be displayed: ")
+	if key in contact:
+		print("The data in the key",key,"is",contact[key])
+		print("Displayed successfully!")
+		print("\n")
+	else:
+		print("Key is not found...")
+
+def displaycitywise():
+	city=input("Enter city name to display the data: ")
+	print("\n")
+	for i in contact:
+		if contact[i][4]==city:
+			print(contact[i])
+	print("\n")
+	print("City wise data displayed successfully!")
+	
+def displayposwise():
+	pos=input("Enter the position name to display data(CEO,TL,MANAGER,EMP): ")
+	print("\n")
+	for i in contact:
+		if contact[i][3]==pos:
+			print(contact[i])
+	print("\n")
+	print("Position wise data displayed successfully!")
+
+print('**********************************************')
+print("WELCOME TO EMPLOYEE DATABASE!")
+print('**********************************************')
+position=input("Enter your job position(CE0,MANAGER,TL,EMP): ")
+
+while True:
+	if position=="CEO" or position=="ceo" or position=="manager" or position=="MANAGER":
+		print("1.Insert a new employee")
+		print("2.Update employee details")
+		print("3.Remove an employee")
+		print("4.Display full employee database")
+		print("5.Get an employee data")
+		print("6.Display position wise employee data")
+		print("7.Display city wise employee data")
+		print("8.Exit")
+	else:
+		print("Sorry!You don't have access rights to view this database")
+		break
+	choice=int(input("Enter the choice: "))
+	if choice==1:
+		print("Insert a new employee")
+		print("\n")
+		insert()
+	elif choice==2:
+		print("Update employee details")
+		print("\n")
+		update()
+	elif choice==3:
+		print("Removing employee")
+		print("\n")
+		remove()
+	elif choice==4:
+		print("Display full employee database")
+		print("\n")
+		print(contact)
+		print("\n")
+	elif choice==5:
+		print("Displaying an employee")
+		print("\n")
+		display()
+	elif choice==6:
+		print("Displaying position wise employee details")
+		print("\n")
+		displayposwise()
+	elif choice==7:
+		print("Diplaying city wise employee details")
+		print("\n")
+		displaycitywise()
+	elif choice==8:
+		print("*************************************")
+		print("\t\tTHANK YOU FOR VISITING THIS DATABASE")
+		print("*************************************")
+		break
+	else:
+		break
+""""
+
+a=input()
+print(a)
+"""
